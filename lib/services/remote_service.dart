@@ -7,7 +7,7 @@ Future<Map<String, dynamic>> getPosts() async {
 }
 
 Future<List<dynamic>> getInfoData() async {
-  String url = 'https://py.dwed.biz/v1.0/api/streaming/';
+  String url = 'https://py.dwed.biz/v1.0/api/streaming/tmeduz/chat/';
   var response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

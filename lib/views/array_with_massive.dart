@@ -20,14 +20,10 @@ class _MassiveArrayState extends State<MassiveArray> {
               body: ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
-              var channelName = snapshot.data![index]['channel_name'];
-              var name = snapshot.data![index]['category']['name'];
-              var thumbnail = snapshot.data![index]['thumbnail'];
-              var logo = snapshot.data![index]['logo'];
-              var channelSlug = snapshot.data![index]['channel_slug'];
-              var liveWatchers = snapshot.data![index]['live_watchers'].toInt();
-              var channelNameUtf8 = channelName.runes.toList();
-              var nameUtf8 = name.runes.toList();
+              var channelName =
+                  snapshot.data![index]['user']['username'];
+              var name = snapshot.data![index]['user']['full_name'];
+              var thumbnail = snapshot.data![index]['user']['avatar'];
 
               return Card(
                 elevation: 0,
@@ -42,14 +38,16 @@ class _MassiveArrayState extends State<MassiveArray> {
                     CircleAvatar(
                       radius: 24.0,
                       backgroundColor: Colors.transparent,
-                      backgroundImage: NetworkImage(logo),
+                      backgroundImage: NetworkImage(thumbnail),
                     ),
-                    Text(name)
+                    Text(name),
+                    Text(channelName),
                   ],
                 ),
               );
             },
-          ));
+          ),
+          );
         } else
           return CupertinoActivityIndicator();
       },
